@@ -1,7 +1,7 @@
 {
   "user": {
-    "user-id": 1001,
-    "group-id": 121
+    "user-id": 1000,
+    "group-id": 122
   },
   "install": [
     {
@@ -80,9 +80,16 @@
     },
     {
       "category": "node",
-      "source": "apt",
+      "source": "script",
       "packages": [
-        "nodejs"
+        "node"
+      ]
+    },
+    {
+      "category": "yarn",
+      "source": "script",
+      "packages": [
+        "yarn"
       ]
     },
     {

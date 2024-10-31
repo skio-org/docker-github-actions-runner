@@ -1,5 +1,6 @@
 # hadolint ignore=DL3007
-FROM myoung34/github-runner-base:latest
+# FROM myoung34/github-runner-base:latest
+FROM runner-base
 LABEL maintainer="myoung34@my.apsu.edu"
 
 ENV AGENT_TOOLSDIRECTORY=/opt/hostedtoolcache
@@ -21,6 +22,9 @@ RUN chmod +x /actions-runner/install_actions.sh \
 
 COPY token.sh entrypoint.sh app_token.sh /
 RUN chmod +x /token.sh /entrypoint.sh /app_token.sh
+
+COPY --from=golang:1.23.2-bookworm /usr/local/go/ /usr/local/go/
+ENV PATH="/usr/local/go/bin:${PATH}"
 
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["./bin/Runner.Listener", "run", "--startuptype", "service"]

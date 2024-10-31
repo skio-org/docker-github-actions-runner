@@ -11,5 +11,9 @@ ENV LC_ALL=en_US.UTF-8
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 ENV DEBIAN_FRONTEND=noninteractive
 
+ENV NODE_DIR /root/.node
+ENV NODE_VERSION 18.20.4
+ENV PATH /root/.node/node-v${NODE_VERSION}-linux-arm64/bin:${PATH}
+
 COPY --chmod=700 build/ /tmp/build/
 RUN /tmp/build/install_base.sh

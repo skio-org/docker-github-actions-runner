@@ -1,6 +1,16 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+function install_yarn() {
+  npm install -g yarn
+}
+
+function install_node() {
+  mkdir $NODE_DIR
+  curl -LO https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-arm64.tar.xz
+  tar xf node-v$NODE_VERSION-linux-arm64.tar.xz -C $NODE_DIR
+}
+
 function install_git() {
   ( apt-get install -y --no-install-recommends git \
    || apt-get install -t stable -y --no-install-recommends git )
